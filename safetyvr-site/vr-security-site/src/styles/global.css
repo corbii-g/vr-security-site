@@ -1,0 +1,95 @@
+/* ══════════════════════════════════════════════
+   GLOBAL — variabili, reset, base
+   ══════════════════════════════════════════════ */
+
+:root {
+  /* Palette */
+  --bg-primary:    #04060e;
+  --bg-secondary:  #080c18;
+  --bg-card:       #0b1020;
+  --bg-card-hover: #0f1628;
+
+  /* Accenti */
+  --cyan:          #00e8ff;
+  --cyan-dim:      rgba(0, 232, 255, 0.18);
+  --cyan-glow:     rgba(0, 232, 255, 0.35);
+  --amber:         #ffb300;
+  --amber-dim:     rgba(255, 179, 0, 0.15);
+  --red-vr:        #ff3d5a;
+  --red-dim:       rgba(255, 61, 90, 0.15);
+
+  /* Testo */
+  --text-primary:   #ddeef5;
+  --text-secondary: #6e90a8;
+  --text-muted:     #2e4558;
+
+  /* Bordi */
+  --border-dim:    rgba(0, 232, 255, 0.07);
+  --border-soft:   rgba(0, 232, 255, 0.18);
+
+  /* Tipografia */
+  --font-display: 'Orbitron', monospace;
+  --font-mono:    'Share Tech Mono', monospace;
+  --font-body:    'Exo 2', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* Griglia di sfondo */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 232, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 232, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Vignette radiale */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, transparent 40%, rgba(4, 6, 14, 0.7) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+main { position: relative; z-index: 1; }
+
+/* Sezione base */
+.section-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 0;
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container { padding: 0 1.25rem; }
+  .section-wrap { padding: 4rem 0; }
+}
