@@ -1,7 +1,6 @@
-# SafetyVR — Sito del Progetto
+# SAFE VR — Sito di Presentazione del Progetto
 
-Sito React + Vite per presentare il progetto **SafetyVR**, simulazione immersiva
-per le prove di evacuazione dell'ITIS Archimede di Treviglio.
+Il sito funge da presentazione per il progetto **SAFE VR**, un'applicazione di simulazione per le prove di evacuazione in realtà virtuale.
 
 ---
 
