@@ -1,37 +1,41 @@
+import { useLang } from '../context/LangContext.jsx'
 import SectionHeader from '../components/SectionHeader.jsx'
-import { PROJECT } from '../data/content.js'
+import { PROJECT, CONTENT_EN } from '../data/content.js'
 
 export default function ProjectSection() {
+  const { lang } = useLang()
+  const p  = lang === 'en' ? CONTENT_EN.project : null
+  const it = PROJECT
+
+  const intro     = p ? p.intro     : it.intro
+  const goal      = p ? p.goal      : it.goal
+  const highlight = p ? p.highlight : it.highlight
+  const scenarios = p ? p.scenarios : it.scenarios
+  const stats     = p ? p.stats     : it.stats
+  const label     = p ? p.sectionLabel : 'Il Progetto'
+  const title     = p ? p.sectionTitle : 'SafetyVR — Di cosa si tratta'
+  const scenLabel = p ? p.scenariosLabel : 'SCENARI:'
+
   return (
     <section className="section-wrap" id="progetto">
       <div className="container">
-        <SectionHeader label="Il Progetto" title="SafetyVR — Di cosa si tratta" />
-
+        <SectionHeader label={label} title={title} />
         <div className="about-grid">
-          {/* Testo descrittivo */}
           <div>
             <div className="about-text">
-              <p>{PROJECT.intro}</p>
-              <p>{PROJECT.goal}</p>
+              <p>{intro}</p>
+              <p>{goal}</p>
             </div>
-
-            <div className="about-highlight">{PROJECT.highlight}</div>
-
+            <div className="about-highlight">{highlight}</div>
             <div className="scenario-tags">
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-muted)', letterSpacing: '0.1em', alignSelf: 'center' }}>
-                SCENARI:
-              </span>
-              {PROJECT.scenarios.map(s => (
-                <span key={s.label} className={`scenario-badge ${s.cls}`}>
-                  {s.label}
-                </span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-muted)', letterSpacing: '0.1em', alignSelf: 'center' }}>{scenLabel}</span>
+              {scenarios.map(s => (
+                <span key={s.label} className={`scenario-badge ${s.cls}`}>{s.label}</span>
               ))}
             </div>
           </div>
-
-          {/* Statistiche */}
           <div className="about-stats">
-            {PROJECT.stats.map(s => (
+            {stats.map(s => (
               <div className="stat-card" key={s.label}>
                 <div className="stat-value">{s.value}</div>
                 <div className="stat-label">{s.label}</div>

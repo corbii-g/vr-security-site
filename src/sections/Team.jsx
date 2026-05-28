@@ -1,20 +1,25 @@
+import { useLang } from '../context/LangContext.jsx'
 import SectionHeader from '../components/SectionHeader.jsx'
-import { TEAM, SITE } from '../data/content.js'
+import { TEAM, SITE, CONTENT_EN } from '../data/content.js'
 
 export default function Team() {
+  const { lang } = useLang()
+  const en = CONTENT_EN.team
+
+  const label = lang === 'en' ? en.sectionLabel : 'Il Team'
+  const title = lang === 'en' ? en.sectionTitle : 'Chi ha realizzato SafetyVR'
+  const intro = lang === 'en'
+    ? en.intro
+    : `Un gruppo di studenti dell'${SITE.school} che ha unito competenze di programmazione, modellazione 3D e sviluppo VR per realizzare questo progetto.`
+
   return (
     <section className="section-wrap" id="team">
       <div className="container">
-        <SectionHeader label="Il Team" title="Chi ha realizzato SafetyVR" />
-
-        <p style={{ color: 'var(--text-secondary)', maxWidth: '560px', marginBottom: '0.5rem', fontSize: '0.97rem' }}>
-          Un gruppo di studenti dell&apos;{SITE.school} che ha unito competenze
-          di programmazione, modellazione 3D e game design per realizzare questo progetto.
-        </p>
-
+        <SectionHeader label={label} title={title} />
+        <p style={{ color: 'var(--text-secondary)', maxWidth: '560px', marginBottom: '2rem', fontSize: '0.97rem' }}>{intro}</p>
         <div className="team-grid">
           {TEAM.map(m => (
-            <div className="card team-card" key={m.initials + m.name}>
+            <div className="card team-card" key={m.name}>
               <div className="team-avatar">{m.initials}</div>
               <div className="team-name">{m.name}</div>
               <div className="team-role">{m.role}</div>
